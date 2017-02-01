@@ -6,7 +6,54 @@
 </head>
 <body>
     <script>
+        // ДЗ 1
+        function ucFirst(str) {
+          return str.charAt(0).toUpperCase() + str.substring(1);
+        }
 
+        console.log(ucFirst("привет"));
+
+//        ДЗ 2
+//        Напишите функцию checkSpam(str), которая возвращает true, если строка str содержит „viagra“ или „XXX“, а иначе false.
+//
+//        Функция должна быть нечувствительна к регистру:
+//
+//        checkSpam('buy ViAgRA now') == true
+//        checkSpam('free xxxxx') == true
+//        checkSpam("innocent rabbit") == false
+
+        function checkSpam(str) {
+          return str.toLowerCase().indexOf("viagra") != -1 || str.toLowerCase().indexOf("xxx") != -1;
+        }
+
+        // Дело в том, что вызов ~n эквивалентен выражению -(n+1)
+
+        function checkSpam2(str) {
+          var lowerStr = str.toLowerCase();
+
+          return !!(~lowerStr.indexOf('viagra') || ~lowerStr.indexOf('xxx'));
+        }
+
+        console.log(checkSpam('buy ViAgRA now'));
+        console.log(checkSpam('free xxxxx'));
+        console.log(checkSpam('innocent rabbit'));
+        console.log(checkSpam2('innocent rabbit'));
+        console.log(checkSpam2('free xxxxx'));
+
+        // ДЗ 3
+//        //Создайте функцию truncate(str, maxlength), которая проверяет длину строки str, 
+        // и если она превосходит maxlength – заменяет конец str на "...", так чтобы ее длина стала равна maxlength.
+//
+//        Результатом функции должна быть (при необходимости) усечённая строка.
+        
+        function truncate(str, max) {
+          if (!isNaN(max)) {
+            return str.substr(0, max) + '...';
+          }
+          return false;
+        }
+
+        console.log(truncate("Вот, что мне хотелось бы сказать на эту тему:", 20));
     </script>
 </body>
 </html>
